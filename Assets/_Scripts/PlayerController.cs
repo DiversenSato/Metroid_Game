@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 MyScale;
     private Rigidbody2D rb;
     public LayerMask layer;
+    public float speed = 3;
 
 	void Start ()
     {
@@ -18,14 +19,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            this.transform.Translate(3 * Time.deltaTime, 0, 0);
+            this.transform.Translate(speed * Time.deltaTime, 0, 0);
             MyScale.x = 2;
             this.transform.localScale = MyScale;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            this.transform.Translate(-3 * Time.deltaTime, 0, 0);
+            this.transform.Translate(-speed * Time.deltaTime, 0, 0);
             MyScale.x = -2;
             this.transform.localScale = MyScale;
         }
