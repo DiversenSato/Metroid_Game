@@ -24,14 +24,10 @@ public class EnemyController : MonoBehaviour
 
         if(hit.collider != null)
         {
-            Debug.Log(hit.collider.transform.name);
-
             if (hit.collider.gameObject.CompareTag("Player"))
             {
                 isChasing = true;   
             }
-
-            Debug.Log(isChasing);
         }
 
         if (isChasing == true)
@@ -41,7 +37,22 @@ public class EnemyController : MonoBehaviour
 
         if (isChasing == false)
         {
-            this.transform.position = Vector3.Lerp(pointA.position, pointB.position, Mathf.PingPong(Time.time * enemySpeed, 1));
+            float t = Mathf.PingPong(Time.time * enemySpeed, 1);
+            this.transform.position = Vector3.Lerp(pointA.position, pointB.position, t);
+
+            if (t > 0.95f)
+            {
+                Vector3 scale = this.transform.localScale;
+                scale.x = -0.5f;
+                this.transform.localScale = scale;
+            }
+
+            if (t < 0.05f)
+            {
+                Vector3 scale = this.transform.localScale;
+                scale.x = 0.5f;
+                this.transform.localScale = scale;
+            }
         }
     }
 }
