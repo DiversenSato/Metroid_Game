@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController1 : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     public Transform pointA;
     public Transform pointB;
+
+    public float enemySpeed;
 
 	void Start ()
     {
@@ -14,6 +16,6 @@ public class EnemyController1 : MonoBehaviour
 	
 	void Update ()
     {
-		
+        this.transform.position = Vector3.Lerp(pointA.position, pointB.position, Mathf.PingPong(Time.time * enemySpeed, 1));
 	}
 }
