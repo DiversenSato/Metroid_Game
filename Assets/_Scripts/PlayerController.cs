@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public LayerMask layer;
     public float speed = 3;
+    public float jumpHeight = 3;
 
 	void Start ()
     {
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && isgrounded())
         {
-            rb.AddForce(Vector2.up * 100);
+            rb.AddForce(Vector2.up * jumpHeight);
         }
     }
 
